@@ -5,7 +5,7 @@ use std::f32::consts::PI;
 use image::{GenericImageView, Pixel, RgbImage};
 
 fn help(script_name: &String) {
-    println!("{} [INPUT_FILE] [OUTPUT_FILE] [center X] [center Y] [inner radius] [outer radius]", script_name);
+    println!("{} [INPUT_FILE] [OUTPUT_FILE] [center X] [center Y] [inner diameter] [outer diameter]", script_name);
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -20,8 +20,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let output_path = &args[2];
     let center_x = args[3].parse::<u32>().unwrap();
     let center_y = args[4].parse::<u32>().unwrap();
-    let inner_radius = args[5].parse::<u32>().unwrap();
-    let outer_radius = args[6].parse::<u32>().unwrap();
+    let inner_radius = args[5].parse::<u32>().unwrap() / 2;
+    let outer_radius = args[6].parse::<u32>().unwrap() / 2;
 
     if inner_radius >= outer_radius {
         help(&args[0]);
